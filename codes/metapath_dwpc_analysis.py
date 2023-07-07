@@ -31,7 +31,7 @@ extracted_metapaths = get_all_metapaths_for_node_pair(SOURCE_NODETYPE, TARGET_NO
 node_file = pd.read_csv(SOURCE_NODE_FILE)
 node_file[IDENTIFIER_COLUMN] = SOURCE_NODETYPE + ":" + node_file[IDENTIFIER_COLUMN]
 source_nodes = list(node_file[IDENTIFIER_COLUMN].unique())
-source_nodes = source_nodes[0:50]
+source_nodes = source_nodes[0:5]
 target_node = TARGET_NODETYPE + ":" + TARGET_NODE
 
 def main():
