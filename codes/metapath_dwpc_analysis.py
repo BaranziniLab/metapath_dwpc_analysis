@@ -74,6 +74,8 @@ def dwpc_pipeline(source_node):
     dwpc_for_a_source_node = []
     for metapath_selected in extracted_metapaths:
         metapath_traced = get_all_paths_corresponding_to_a_metapath(source_node, target_node, metapath_selected)
+        if len(metapath_traced) > 0:
+            metapath_traced = list(pd.DataFrame(metapath_traced).drop_duplicates().to_records(index=False))
         dwpc_for_a_source_node.append(compute_dwpc_for_a_metapath(metapath_traced))
     out[source_node] = dwpc_for_a_source_node
     return out
@@ -130,11 +132,17 @@ def get_all_paths_corresponding_to_a_metapath(source_node, target_node, metapath
                         if G[neighbor1][neighbor2]["edgetype"] == metapath[1]:
                             for neighbor3 in G.neighbors(neighbor2):
                                 if neighbor3 == target_node and G[neighbor2][neighbor3]["edgetype"] == metapath[2]:
-                                    path_traced.append([
-                                        (source_node, G[source_node][neighbor1]["edgetype"], neighbor1),
-                                        (neighbor1, G[neighbor1][neighbor2]["edgetype"], neighbor2),
-                                        (neighbor2, G[neighbor2][neighbor3]["edgetype"], neighbor3)
-                                    ])
+                                    if neighbor1 == neighbor2:
+                                        path_traced.append([
+                                            (source_node, G[source_node][neighbor1]["edgetype"], neighbor1),
+                                            (neighbor2, G[neighbor2][neighbor3]["edgetype"], neighbor3)
+                                        ])
+                                    else:
+                                        path_traced.append([
+                                            (source_node, G[source_node][neighbor1]["edgetype"], neighbor1),
+                                            (neighbor1, G[neighbor1][neighbor2]["edgetype"], neighbor2),
+                                            (neighbor2, G[neighbor2][neighbor3]["edgetype"], neighbor3)
+                                        ])
 
         elif number_of_hops_in_metapath == 4:
             for neighbor1 in G.neighbors(source_node):
@@ -145,12 +153,18 @@ def get_all_paths_corresponding_to_a_metapath(source_node, target_node, metapath
                                 if G[neighbor2][neighbor3]["edgetype"] == metapath[2]:
                                     for neighbor4 in G.neighbors(neighbor3):
                                         if neighbor4 == target_node and G[neighbor3][neighbor4]["edgetype"] == metapath[3]:
-                                            path_traced.append([
-                                                (source_node, G[source_node][neighbor1]["edgetype"], neighbor1),
-                                                (neighbor1, G[neighbor1][neighbor2]["edgetype"], neighbor2),
-                                                (neighbor2, G[neighbor2][neighbor3]["edgetype"], neighbor3),
-                                                (neighbor3, G[neighbor3][neighbor4]["edgetype"], neighbor4)
-                                            ])
+                                            if neighbor1 == neighbor3:
+                                                path_traced.append([
+                                                    (source_node, G[source_node][neighbor1]["edgetype"], neighbor1),
+                                                    (neighbor3, G[neighbor3][neighbor4]["edgetype"], neighbor4)
+                                                ])
+                                            else:
+                                                path_traced.append([
+                                                    (source_node, G[source_node][neighbor1]["edgetype"], neighbor1),
+                                                    (neighbor1, G[neighbor1][neighbor2]["edgetype"], neighbor2),
+                                                    (neighbor2, G[neighbor2][neighbor3]["edgetype"], neighbor3),
+                                                    (neighbor3, G[neighbor3][neighbor4]["edgetype"], neighbor4)
+                                                ])
     return path_traced
 
 
