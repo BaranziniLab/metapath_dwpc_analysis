@@ -132,12 +132,7 @@ def get_all_paths_corresponding_to_a_metapath(source_node, target_node, metapath
                         if G[neighbor1][neighbor2]["edgetype"] == metapath[1]:
                             for neighbor3 in G.neighbors(neighbor2):
                                 if neighbor3 == target_node and G[neighbor2][neighbor3]["edgetype"] == metapath[2]:
-                                    if neighbor1 == neighbor2:
-                                        path_traced.append([
-                                            (source_node, G[source_node][neighbor1]["edgetype"], neighbor1),
-                                            (neighbor2, G[neighbor2][neighbor3]["edgetype"], neighbor3)
-                                        ])
-                                    else:
+                                    if neighbor1 != neighbor2:
                                         path_traced.append([
                                             (source_node, G[source_node][neighbor1]["edgetype"], neighbor1),
                                             (neighbor1, G[neighbor1][neighbor2]["edgetype"], neighbor2),
@@ -153,12 +148,7 @@ def get_all_paths_corresponding_to_a_metapath(source_node, target_node, metapath
                                 if G[neighbor2][neighbor3]["edgetype"] == metapath[2]:
                                     for neighbor4 in G.neighbors(neighbor3):
                                         if neighbor4 == target_node and G[neighbor3][neighbor4]["edgetype"] == metapath[3]:
-                                            if neighbor1 == neighbor3:
-                                                path_traced.append([
-                                                    (source_node, G[source_node][neighbor1]["edgetype"], neighbor1),
-                                                    (neighbor3, G[neighbor3][neighbor4]["edgetype"], neighbor4)
-                                                ])
-                                            else:
+                                            if neighbor1 != neighbor3:
                                                 path_traced.append([
                                                     (source_node, G[source_node][neighbor1]["edgetype"], neighbor1),
                                                     (neighbor1, G[neighbor1][neighbor2]["edgetype"], neighbor2),
