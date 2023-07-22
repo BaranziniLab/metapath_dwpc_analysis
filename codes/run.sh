@@ -1,4 +1,4 @@
-conda run -n pagerank python metapath_dwpc_analysis.py ../../dwpc_data/food_nodes_sub.csv Food DOID:9352 Disease identifier ../../spoke_35M_data/spoke_metagraph.gpickle ../../spoke_35M_data/spoke_35M_compound_pruned_version.gpickle ../../dwpc_data/ dwpc_food_diabetes_disease.pickle 100 >> logs/dwpc_food_diabetes_disease_after_funky_edge_correction_1.log 2>&1 &
+conda run -n pagerank python metapath_dwpc_analysis.py ../../dwpc_data/food_nodes_sub_corrupted.csv Food DOID:9352 Disease identifier ../../spoke_35M_data/spoke_metagraph.gpickle ../../spoke_35M_data/spoke_35M_compound_pruned_version.gpickle ../../dwpc_data/ dwpc_food_diabetes_disease.pickle 100 >> logs/dwpc_food_diabetes_disease_after_funky_edge_correction_1.log 2>&1 &
 echo "Completed Diabetes Disease"
 wait
 
