@@ -140,6 +140,6 @@ def get_all_paths_corresponding_to_a_metapath(source_node, target_node, metapath
 
 if __name__ == "__main__":
     import cProfile
-    cProfile.run("main()", os.path.join(SAVE_PATH, PROFILE_SAVE_NAME))
+    cProfile.run("main()", os.path.join(SAVE_PATH, PROFILE_SAVE_NAME), sort="tottime")
     
     
