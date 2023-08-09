@@ -28,17 +28,16 @@ with open(METAGRAPH_PATH, "rb") as f:
 with open(GRAPH_PATH, "rb") as f:
     G = pickle.load(f)
     
+extracted_metapaths = get_all_metapaths_for_node_pair(SOURCE_NODETYPE, TARGET_NODETYPE, G_metagraph, MAX_META_PATH_LENGTH)
 
 node_file = pd.read_csv(SOURCE_NODE_FILE)
 node_file[IDENTIFIER_COLUMN] = SOURCE_NODETYPE + ":" + node_file[IDENTIFIER_COLUMN]
 source_nodes = list(node_file[IDENTIFIER_COLUMN].unique())
-source_nodes = source_nodes[0:2]
+source_nodes = source_nodes[0:100]
 target_node = TARGET_NODETYPE + ":" + TARGET_NODE
 
 
-def main():
-    global extracted_metapaths
-    extracted_metapaths = get_all_metapaths_for_node_pair(SOURCE_NODETYPE, TARGET_NODETYPE, G_metagraph, MAX_META_PATH_LENGTH)
+def main():    
     out_dict_list = []
     for source_node in source_nodes:
         out_dict_list.append(dwpc_pipeline(source_node))
