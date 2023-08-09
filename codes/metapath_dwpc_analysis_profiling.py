@@ -39,8 +39,10 @@ target_node = TARGET_NODETYPE + ":" + TARGET_NODE
 
 def main():    
     out_dict_list = []
-    for source_node in source_nodes:
+    print("starting loop for source_nodes")
+    for source_node in source_nodes:        
         out_dict_list.append(dwpc_pipeline(source_node))
+    print("loop for source_nodes completed!")
     concatenated_dict = {}
     for dictionary in out_dict_list:
         concatenated_dict.update(dictionary)    
