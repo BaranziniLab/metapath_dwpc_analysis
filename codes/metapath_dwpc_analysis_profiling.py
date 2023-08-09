@@ -46,6 +46,8 @@ def main():
     concatenated_dict = {}
     for dictionary in out_dict_list:
         concatenated_dict.update(dictionary)    
+    print(concatenated_dict)
+    print(len(concatenated_dict))
     concatenated_dict["metapaths"] = extracted_metapaths
 
 
