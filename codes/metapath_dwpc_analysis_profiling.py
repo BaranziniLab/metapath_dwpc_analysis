@@ -12,7 +12,7 @@ SOURCE_NODETYPE = sys.argv[2]
 TARGET_NODE = sys.argv[3]
 TARGET_NODETYPE = sys.argv[4]
 IDENTIFIER_COLUMN = sys.argv[5]
-NODE_SEPERATOR = sys.argv[6]
+NODETYPE_SEPERATOR = sys.argv[6]
 METAGRAPH_PATH = sys.argv[7]
 GRAPH_PATH = sys.argv[8]
 SAVE_PATH = sys.argv[9]
@@ -32,10 +32,10 @@ with open(GRAPH_PATH, "rb") as f:
 extracted_metapaths = get_all_metapaths_for_node_pair(SOURCE_NODETYPE, TARGET_NODETYPE, G_metagraph, MAX_META_PATH_LENGTH)
 
 node_file = pd.read_csv(SOURCE_NODE_FILE)
-node_file[IDENTIFIER_COLUMN] = SOURCE_NODETYPE + NODE_SEPERATOR + node_file[IDENTIFIER_COLUMN]
+node_file[IDENTIFIER_COLUMN] = SOURCE_NODETYPE + NODETYPE_SEPERATOR + node_file[IDENTIFIER_COLUMN]
 # source_nodes = list(node_file[IDENTIFIER_COLUMN].unique())
 source_nodes = ["Food|FOODON:03302116", "Food|FOODON:03305289"]
-target_node = TARGET_NODETYPE + NODE_SEPERATOR + TARGET_NODE
+target_node = TARGET_NODETYPE + NODETYPE_SEPERATOR + TARGET_NODE
 
 
 def main():    
