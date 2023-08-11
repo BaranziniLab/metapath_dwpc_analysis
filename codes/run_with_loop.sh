@@ -17,6 +17,7 @@ for i in "${!DISEASE_IDS[@]}"; do
     DISEASE_NAME="${DISEASE_NAMES[$i]}"
     
     conda run -n pagerank python metapath_dwpc_analysis.py "$SOURCE_NODE_FILE" "$SOURCE_NODE_TYPE" "$DISEASE_ID" "$TARGET_NODE_TYPE" "$IDENTIFIER_COLUMN" "$NODETYPE_SEPARATOR" "$METAGRAPH_PATH" "$GRAPH_PATH" "$SAVE_PATH" "dwpc_food_${DISEASE_NAME}_disease.pickle" "$NCORES" >> "logs/dwpc_food_${DISEASE_NAME}_scaled_down_spoke_and_metapath_pruned_1.log" 2>&1 &
-    echo "Completed computing DWPC Food-Disease matrix for $DISEASE_NAME"
     wait
+    echo "Completed computing DWPC Food-Disease matrix for $DISEASE_NAME"
+    
 done
