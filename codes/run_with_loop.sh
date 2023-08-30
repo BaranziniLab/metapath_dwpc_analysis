@@ -9,8 +9,8 @@ GRAPH_PATH="../../dwpc_data/spoke_850T.gpickle"
 SAVE_PATH="../../dwpc_data/"
 NCORES=80
 
-DISEASE_IDS=("DOID:10609" "DOID:13725" "DOID:8457" "DOID:12176" "DOID:8499" "DOID:10573" "DOID:13579" "DOID:12328" "DOID:8454" "DOID:10138" "DOID:11249" "DOID:0050810" "DOID:14026" "DOID:13381" "DOID:8455" "DOID:4500" "DOID:0050336")
-DISEASE_NAMES=("rickets" "beriberi" "pellagra" "goiter" "night_blindness" "osteomalacia" "kwashiorkor" "marasmus" " riboflavin_deficiency" "xerophthalmia" "vitamin_K_deficiency_bleeding" "biotin_deficiency" "folic_acid_deficiency_anemia" "pernicious_anemia" "pyridoxine_deficiency_anemia" "hypokalemia" "hypophosphatemia")
+DISEASE_IDS=("DOID:9352" "DOID:10763" "DOID:9452" "DOID:9970" "DOID:1920" "DOID:4195" "DOID:12678" "DOID:2018" "DOID:9972" "DOID:9971") 
+DISEASE_NAMES=("type_2_diabetes_mellitus" "hypertension" "fatty_liver_disease" "obesity" "hyperuricemia" "hyperglycemia" "hypercalcemia" "hyperinsulinism" "hypervitaminosis_A" "hypervitaminosis_D")
 
 for i in "${!DISEASE_IDS[@]}"; do
     DISEASE_ID="${DISEASE_IDS[$i]}"
