@@ -9,8 +9,8 @@ GRAPH_PATH="../../dwpc_data/spoke_850T.gpickle"
 SAVE_PATH="../../dwpc_data/"
 NCORES=80
 
-DISEASE_IDS=("DOID:11476" "DOID:13724" "DOID:11758" "DOID:2355")
-DISEASE_NAMES=("osteoporosis" "scurvy" "iron_deficiency_anemia" "anemia")
+DISEASE_IDS=("DOID:10609" "DOID:13725" "DOID:8457" "DOID:12176" "DOID:8499" "DOID:10573" "DOID:13579" "DOID:12328" "DOID:8454" "DOID:10138" "DOID:11249" "DOID:0050810" "DOID:14026" "DOID:13381" "DOID:8455" "DOID:4500" "DOID:0050336")
+DISEASE_NAMES=("rickets" "beriberi" "pellagra" "goiter" "night_blindness" "osteomalacia" "kwashiorkor" "marasmus" " riboflavin_deficiency" "xerophthalmia" "vitamin_K_deficiency_bleeding" "biotin_deficiency" "folic_acid_deficiency_anemia" "pernicious_anemia" "pyridoxine_deficiency_anemia" "hypokalemia" "hypophosphatemia")
 
 for i in "${!DISEASE_IDS[@]}"; do
     DISEASE_ID="${DISEASE_IDS[$i]}"
