@@ -1,3 +1,15 @@
+'''
+This script can be utilized to create the metagraph of a specific SPOKE instance. 
+The function 'get_metagraph' returns a networkx instance of the metagraph.
+
+Usage:
+
+from get_metagraph import get_metagraph
+spoke_instance = 'prod'
+G_metagraph = get_metagraph(spoke_instance=spoke_instance)
+
+'''
+
 import requests
 import networkx as nx
 import pandas as pd
